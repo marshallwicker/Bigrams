@@ -64,6 +64,16 @@ def calculate_bigrams(word_list):
     return return_dict
 
 
+class WordStruct:
+    word_dict = None
+    depth = 0
+
+    def __init__(self, word, following_word, depth):
+        self.depth = depth
+        self.word_list = {word: [1, following_word]}
+
+
+
 def import_text_file(filename):
     text_file = open(filename, 'r')
 
