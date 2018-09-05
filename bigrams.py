@@ -56,19 +56,11 @@ def calculate_bigrams(word_list):
         current_word = word
 
     return_dict = {}
-    # most_occurances = -1
-    # most_occurred = None
-    # total_words = 0
     for word, values in word_dictionary.items():
         occurrences = values[0]
-        # total_words += occurrences
-        # if occurrences >= most_occurances:
-            # most_occurances = occurrences
-            # most_occurred = word
         following_words = values[1]
         return_dict[word] = {following_word: following_word_occurrences / occurrences
                              for following_word, following_word_occurrences in following_words.items()}
-    # print(most_occurances, most_occurred, len(word_dictionary), total_words)
     return return_dict
 
 
