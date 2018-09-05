@@ -1,4 +1,4 @@
-import re, string
+import re
 
 
 def calculate_bigrams(word_list):
