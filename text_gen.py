@@ -259,8 +259,14 @@ def random_bigram_text(first_word, bigrams, num_words):
 
     """
 
-    # TODO
-    return ' '.join([first_word] * num_words)
+    return_string = [first_word]
+    current_word = first_word
+
+    for i in range(num_words - 1):
+        current_word = select_random(bigrams[current_word])
+        return_string.append(current_word)
+
+    return ' '.join(return_string)
 
 
 def random_trigram_text(first_word, second_word, bigrams, trigrams, num_words):
@@ -285,8 +291,21 @@ def random_trigram_text(first_word, second_word, bigrams, trigrams, num_words):
        single space.
 
     """
-    # TODO
-    return ' '.join([first_word] * num_words)
+    return_string = [first_word, second_word]
+    current_word = first_word
+    following_word = second_word
+    appended_word = None
+
+    for i in range(num_words - 2):
+        if (current_word, following_word) in trigrams:
+            appended_word = select_random(trigrams[(current_word, following_word)])
+        else:
+            appended_word = select_random(bigrams[following_word])
+        current_word = following_word
+        following_word = appended_word
+        return_string.append(appended_word)
+
+    return ' '.join(return_string)
 
 
 def unigram_main(filename, word_count):
