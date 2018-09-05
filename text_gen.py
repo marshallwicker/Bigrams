@@ -361,7 +361,7 @@ def trigram_main(filename, word_count):
     # Print each line.
     wrapper = textwrap.TextWrapper(width=72)
     for element in wrapper.wrap(text=word_list):
-        print(element)
+        print(element, file=text_file)
 
 
 def n_tuples(seq, n):
@@ -405,6 +405,7 @@ if __name__ == "__main__":
     print("Bigrams:")
     bigram_main(sys.argv[1], int(sys.argv[2]))
 
-    print('-' * 40)
-    print("Trigrams:")
-    trigram_main(sys.argv[1], int(sys.argv[2]))
+    with open('generated_trigrams.txt', 'w+') as text_file:
+        print('-' * 40)
+        print("Trigrams:", file=text_file)
+        trigram_main(sys.argv[1], int(sys.argv[2]))
